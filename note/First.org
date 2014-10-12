@@ -1,6 +1,6 @@
 #+TITLE:最近学习lisp的记录
 
-* lisp是什么									     :lisp:函数式编程:
+* lisp是什么									:lisp:Functional:
 
   lisp 是一种函数式编程语言(一种编程范式). 对数据和过程(函数)并不特别的区分.
 
