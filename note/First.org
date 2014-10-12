@@ -1,0 +1,42 @@
+#+TITLE:最近学习lisp的记录
+
+* lisp是什么									     :lisp:函数式编程:
+
+  lisp 是一种函数式编程语言(一种编程范式). 对数据和过程(函数)并不特别的区分.
+
+* lisp 与我
+  开始看 lisp 是由于之前逛贴吧, 看到一句 "百行代码千括号", 就对 lisp 有了些兴趣,
+  随后就在图书馆借了SICP来看, 并在我的机器上折腾开发环境的搭建.
+  在环境的搭建过程中, 对 lisp 的各方言也有了点印象, 他的方言有: scheme, common
+  lisp 等. 而 SICP 就是用 scheme 来讲授的. 而各类方言的解释器实现又有好多种,
+  比如 scheme 的实现: guile, racket(PLTScheme), MIT scheme 等; common lisp
+  的实现: clisp 等(想不到了). 这里先说下我搭建环境的平台, Windows7 + cygwin, 
+  cygwin 下命令结果如下:
+    
+#+begin_src shell -n    
+  $ uname -a
+  CYGWIN_NT-6.1 YangZongze-PC 1.7.32(0.274/5/3) 2014-08-13 23:03 i686 Cygwin
+  $ cygcheck --version
+  cygcheck (cygwin) 1.7.32
+  System Checker for Cygwin
+  Copyright (C) 1998 - 2014 Red Hat, Inc.
+  This is free software; see the source for copying conditions.  There is NO 
+  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+#+end_src
+
+  在网上看到 Emacs 与 lisp 整合的很好, 使用 Emacs 开发 lisp 很方便,
+  所以才开始时候就稍微学习了下 Emacs, 并用 slime 搞了个环境, 但是不太习惯
+  Emacs. 后来又看到了 Racket(PLTScheme), 支持 Windows 平台,
+  然而在写代码过程中经常崩溃, 所以就弃了(开始的时候还可以忍, 后来发现了
+  slimv, 果断 vim). 可是 slimv 需要 X-server 支持, 在 cygwin 下的 X 窗口太过
+  难看, 又弃之改 Racket. 直到发现了 [[http://crash.net.nz/posts/2014/08/configuring-vim-for-sicp/][Configuring Vim for SICP]],
+  看了文章感觉这样的配制还不错, 就按照文章配制了相应的开发环境. 
+
+** TODO 相关配制								 :vim:tmux:guile:
+
+   - [X] tmux
+   - [ ] vim
+   - [X] guile
+
+
+* The End
