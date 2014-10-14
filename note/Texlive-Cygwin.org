@@ -1,0 +1,39 @@
+#+TITLE: Cygwin TexLive CTEX 书写中文文档
+
+* TexLive 版本 
+
+#+begin_src shell -n    
+  $ tex -v
+  TeX 3.14159265 (TeX Live 2014/Cygwin)
+  $ latex -v
+  pdfTeX 3.14159265-2.6-1.40.15 (TeX Live 2014/Cygwin)
+  $ xelatex -v
+  XeTeX 3.14159265-2.6-0.99991 (TeX Live 2014/Cygwin)
+#+end_src
+
+* 安装使用过程中的小问题
+  1. 安装包安装是最小安装, 需要选上必须得包才能编译中文: langchinese 等.
+  2. 安装后编译时出现错误: 字体没有找到
+
+     需要从 Windows 环境拷贝字体:
+     
+#+begin_src shell -n    
+     mkdir /usr/share/fonts/msfonts
+     cp /cygdrive/c/Windows/Fonts/*.ttf /usr/share/fonts/msfonts/
+     cp /cygdrive/c/Windows/Fonts/simsun.ttc /usr/share/fonts/msfonts/
+     cd /usr/share/fonts/msfonts/
+     mkfontscale.exe
+     mkfontdir
+     fc-cache -f -v
+     fc-list
+#+end_src
+
+  3. 如此仍然有错误: 字体不能找到
+
+     需要修改文件: 
+#+begin_src shell -n    
+       /usr/share/texmf-dist/tex/latex/ctex/fontset/ctex-xecjk-winfonts.def
+#+end_src
+     把 "[SIMKAI.TTF]" 改为 "KaiTi", 把 "---" 改为 "FangSong", 即可!
+
+* The End
