@@ -12,10 +12,12 @@
 #+end_src
 
 * 安装使用过程中的小问题
-  1. 安装包安装是最小安装, 需要选上必须得包才能编译中文: langchinese 等.
-  2. 安装后编译时出现错误: 字体没有找到
-     需要从 Windows 环境拷贝字体:
-#+begin_src shell -n    
+** 安装字体包
+  安装包安装是最小安装, 需要选上必须得包才能编译中文: langchinese 等.
+
+** 字体问题解决 
+   安装后编译时出现错误: 字体没有找到, 需要从 Windows 环境拷贝字体:
+#+begin_src shell -n   -t 
      mkdir /usr/share/fonts/msfonts
      cp /cygdrive/c/Windows/Fonts/*.ttf /usr/share/fonts/msfonts/
      cp /cygdrive/c/Windows/Fonts/simsun.ttc /usr/share/fonts/msfonts/
@@ -24,21 +26,24 @@
      mkfontdir
      fc-cache -f -v
      fc-list
-#+end_src
-  3. 如此仍然有错误: 字体不能找到
-     需要修改文件: 
+#+end_src 
+   如此仍然有错误: 字体不能找到
+   需要修改文件: 
 #+begin_src shell -n    
        /usr/share/texmf-dist/tex/latex/ctex/fontset/ctex-xecjk-winfonts.def
 #+end_src
      把 "[SIMKAI.TTF]" 改为 "KaiTi", 把 "---" 改为 "FangSong", 即可!
-  4. 使用pdflatex编译, 需要添加系统字体路径.
-     在文件 /usr/share/texmf-dist//web2c/texmf.cnf 中添加如下语句.
-#+begin_src shell -n    
+** pdflatex 
+   使用pdflatex编译, 需要添加系统字体路径. 在文件 
+   /usr/share/texmf-dist//web2c/texmf.cnf 中添加如下语句. 
+   方法来源: [[http://bbs.ctex.org/forum.php?mod=viewthread&tid=70222]]
+#+begin_src shell -n  -t 
      OSFONTDIR = .;/usr/share/fonts/msfonts//
 #+end_src
-  5. 问题: xelatex 不能编译, latex 编译后能生成dvi文件, 但是使用 dvipdf
-     转 pdf 时出错. 要安装字体解决, 貌似很麻烦, 不知道具体怎么搞.
-#+begin_src shell -n    
+** 遗留问题 
+   问题: xelatex 不能编译, latex 编译后能生成dvi文件, 但是使用 dvipdf 转  
+   pdf 时出错. 要安装字体解决, 貌似很麻烦, 不知道具体怎么搞.
+#+begin_src shell -n    -t 
      dvips: Font gbkhei60 not found; using cmr10
      dvips: ! invalid char 198 from font gbkhei60
 #+end_src
