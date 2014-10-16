@@ -40,6 +40,16 @@
 #+begin_src shell -n  -t 
      OSFONTDIR = .;/usr/share/fonts/msfonts//
 #+end_src
+** CTEX dvipdf
+   CTex套装中使用dvipdf出错 "Could not locate Omega Virtual Font "PidEid=3"
+   for "gbksong63"", 临时的解决方式是，找到 dvipdfm.map 文件，把里面含有
+   PidEid 的行删掉。解决方法来源:
+   [[http://blog.csdn.net/piaopiaopiaopiaopiao/article/details/38728323]]
+   只需注释掉以下两行
+#+begin_src shell -n    -t 
+   %%% gbkhei@UGBK@ default PidEid=3,1
+   %%% gbksong@UGBK@ default PidEid=3,1
+#+end_src
 ** 遗留问题 
    问题: xelatex 不能编译, latex 编译后能生成dvi文件, 但是使用 dvipdf 转  
    pdf 时出错. 要安装字体解决, 貌似很麻烦, 不知道具体怎么搞.
