@@ -1,0 +1,17 @@
+#+TITLE: Git 笔记
+
+* 新建分支并推送到远程仓库
+
+#+begin_src shell -n   -t 
+  git branch mynewbrach
+  git checkout mynewbrach
+  # 做修改 并 commit
+  # git add .
+  # git commit 
+  git push origin mynewbranch
+#+end_src 
+  建立分支前已经修改了文件， 并且已经add到了暂存区，
+  那么切换到新分支后修改仍旧在， 然后提交并推送， 再切换回原分支后，
+  原分支没有刚才的修改。
+
+* The End
