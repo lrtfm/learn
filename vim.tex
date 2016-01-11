@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{supertabular}
+\usepackage{colortbl}
+
+\setlength{\tabcolsep}{18pt}
+% \setlength{\arrayrulewidth}{1pt}
+\renewcommand{\arraystretch}{1.5}
+
+\begin{document}
+
+\section{vim 插入模式命令}
+\begin{table}[h!]
+  \center\tt
+  \begin{tabular}{|c|c|}
+    \hline
+    上移一行             &  CTRL-G k\\  \hline
+    下移一行             &  CTRL-G j      \\  \hline
+    删除字符             &  CTRL-H      \\  \hline
+    删除单词             &  CTRL-W\\  \hline
+    删除到行首           &  CTRL-U    \\  \hline
+    输入光标下一行的字符 &  CTRL-E\\  \hline
+    输入光标上一行的字符 &  CTRL-Y\\  \hline
+    开始新一行           &  CTRL-M 或 CTRL-J\\  \hline
+    输入Tab              &  CTRL-I\\  \hline
+    在行首输入Tab        &  CTRL-T\\  \hline
+    删除行首的Tab        &  CTRL-D  \\  \hline
+  \end{tabular}
+\end{table}
+\section{vim 正常模式命令}
+\subsection{标记与跳转}
+%\begin{table}[h!]
+  %\tt\center
+  %% `(backtick) or '(single quote)
+  %\begin{tabular}{lll}
+    %m\{a-zA-Z\}      & 在当前位置设置标记    &   mb  \\
+    %m' 或 m`         &                       &  m' 或 m` \\
+    %m[ 或 m]         &                       &  m[ 或 m] \\
+    %m< 或 m>         &                       &  m< 或 m> \\
+    %`\{a-zA-Z0-9\}   & 跳转到某标记处        &   `a  \\
+    %'\{a-zA-Z0-9\}   & 跳转到某标记处        &   'a  \\
+    %g'\{mark\} 或 g`\{mark\} &&\\
+    %'[ 或 `[            &     &\\
+    %'] 或 `]            &&\\
+    %'< 或 `<            &&\\
+    %'> 或 `>            &&\\
+    %'' 或 ``            &&\\
+    %'" 或 `"            &&\\                       
+    %'\^{}  或 `\^{}     &&\\                       
+    %'.\ 或 `.           &&\\                       
+    %'" 或 `"            &&\\                       
+  %\end{tabular}
+%\end{table}
+
+% Test supertabular
+\begin{center}
+  \tablecaption{vim 标记 \label{tab:super}}
+  \tablefirsthead{
+    \rowcolor[gray]{0.8}
+    \hline
+    \multicolumn{1}{|l|}{命令}&\multicolumn{1}{l|}{解释}&\multicolumn{1}{l|}{例} \\
+    \hline
+  }
+  \tablehead{
+    \multicolumn{3}{r}{表 \ref{tab:super} (续)} \\ \rowcolor[gray]{0.8}
+    \hline
+    \multicolumn{1}{|l|}{命令}&\multicolumn{1}{l|}{解释}&\multicolumn{1}{l|}{例} \\
+  }
+  \tabletail{
+    \hline
+    \multicolumn{3}{r}{表 \ref{tab:super} 接下页} \\
+  }
+  \tablelasttail{
+    \hline
+    \multicolumn{3}{r}{表 \ref{tab:super} (完)} \\
+  }
+  \tt
+  %\begin{supertabular}{|c|c|c|}
+  \begin{supertabular}{|c|c|c|}
+    m\{a-zA-Z\}      & 在当前位置设置标记    &   mb  \\\hline
+    m' 或 m`         &                       &  m' 或 m` \\\hline
+    m[ 或 m]         &                       &  m[ 或 m] \\\hline
+    m< 或 m>         &                       &  m< 或 m> \\\hline
+    `\{a-zA-Z0-9\}   & 跳转到某标记处        &   `a  \\\hline
+    '\{a-zA-Z0-9\}   & 跳转到某标记处        &   'a  \\\hline
+    g'\{mark\} 或 g`\{mark\} &&\\\hline
+    '[ 或 `[            &     &\\\hline
+    '] 或 `]            &&\\\hline
+    '< 或 `<            &&\\\hline
+    '> 或 `>            &&\\\hline
+    '' 或 ``            &&\\\hline
+    '" 或 `"            &&\\                       \hline
+    '\^{}  或 `\^{}     &&\\                       \hline
+    '.\ 或 `.           &&\\                       \hline
+    '" 或 `"            &&\\                       \hline
+  \end{supertabular}
+  %\end{supertabular}
+\end{center}
+
+\begin{table}[h!]
+  \tt\center
+  \begin{tabular}{|c|c|}
+    \hline
+    跳转到 {\bf jump list} 中更旧的位置  &  CTRL-O             \\\hline
+    跳转到 {\bf jump list} 中较新的位置  &  CTRL-I 或 <Tab>    \\\hline
+    显示当前跳转列表 ({\bf jump list})        &  :ju[mps]           \\\hline
+    跳转到 {\bf change list} 中更旧的位置     &  g;             \\\hline
+    跳转到 {\bf change list} 中较新的位置     &  g,    \\\hline
+    显示当前更改列表 ({\bf change list})      &  :chagnes           \\\hline
+    跳转到当前窗口的首行  (first line, home)  &  H     \\\hline
+    跳转到当前窗口的中间行 (middle line)      &  M       \\\hline
+    跳转到当前窗口的底行 (last line)          &  L     \\\hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \tt\center
+  \begin{tabular}{|c|c|}
+    \hline
+    \%                & 跳转到匹配位置  ([\{\}]) \\\hline
+    {[(}              &    \\\hline
+    {[\{}             &    \\\hline
+    {])}              &    \\\hline
+    {]\}}             & \\\hline
+  \end{tabular}
+\end{table}
+vim help
+
+% \begin{enumerate}
+%   \item 上移一行:  CTRL-G k
+%   \item 下移一行:  CTRL-G j
+%   \item 删除字符:    CTRL-H
+%   \item 删除单词:    CTRL-W
+%   \item 删除到行首:  CTRL-U
+%   \item 输入光标下一行的字符:  CTRL-E
+%   \item 输入光标上一行的字符:  CTRL-Y
+%   \item 开始新一行:  CTRL-M  CTRL-J
+%   \item 输入Tab:        CTRL-I
+%   \item 在行首输入Tab:  CTRL-T
+%   \item 删除行首的Tab:  CTRL-D
+% \end{enumerate}
+
+\end{document}
