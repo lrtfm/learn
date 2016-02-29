@@ -1,3 +1,12 @@
+/*
+ * input_history.c
+ *
+ * 模拟 bash readline 库实现历史命令存储
+ *
+ * Compile:
+ *      gcc -g `pkg-config --cflags ncurses` -o input_history.c \
+ *      `pkg-config --libs ncurses`
+ */
 #include <stdio.h>
 #include <string.h>
 #include <ncurses/ncurses.h>
