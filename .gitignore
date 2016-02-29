@@ -1,2 +1,15 @@
 *.bak
 *.swp
+tags
+*~
+*.o
+*.i
+.*project
+*.aux
+*.pdf
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.dvi
