@@ -1,0 +1,39 @@
+#!python
+
+import sys
+import zlib
+import binascii
+
+narg = len(sys.argv)
+filename = sys.argv[1]
+fd = open(filename, 'rb')
+line = fd.read()
+line= zlib.decompress(line)
+h = binascii.b2a_hex(line)
+n = len(h)
+j = 0
+for i in range(0,n,4):
+  if i%32 == 0 :
+    print '%08x:' %(i/2),
+  last = min(i+4,n)
+  print h[i:last],
+  if (i+4)%32 == 0 and n > i+4 :
+    sys.stdout.write('    ')
+    for j in range(i/2-14,i/2+2):
+      if line[j] >' ' and line[j]<='~':
+        sys.stdout.write('%c' %(line[j]))
+      else:
+        sys.stdout.write('.')
+    sys.stdout.write('\n')
+m = 32 - n%32
+
+sys.stdout.write(' '*(m+m/4))
+sys.stdout.write('    ')
+for j in range((n-n%32)/2,len(line)):
+  if line[j] >' ' and line[j]<='~':
+    sys.stdout.write('%c' %(line[j]))
+  else:
+    sys.stdout.write('.')
+sys.stdout.write('\n')
+
+
